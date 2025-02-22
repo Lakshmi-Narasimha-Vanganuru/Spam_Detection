@@ -66,7 +66,7 @@ The Spam Detection System provides an efficient solution to filter out spam mess
 
 ### 📩 Contact
 For any queries or collaborations, feel free to reach out!
-📧 Email: your.email@example.com
-GitHub: [yourusername](https://github.com/yourusername/)
+📧 Email: narasimha22004@gmail.com
+GitHub: [yourusername](Lakshmi-Narasimha-Vanganuru)
 
 
