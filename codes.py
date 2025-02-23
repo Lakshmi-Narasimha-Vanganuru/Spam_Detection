@@ -9,7 +9,7 @@ from sklearn.metrics import accuracy_score  # To evaluate model performance
 import pickle  # Used to save the trained model and vectorizer
 
 # **STEP 1: Load Dataset**
-raw_mail_data = pd.read_csv("C:/Users/naras/OneDrive/Desktop/uio/mail.csv")  
+raw_mail_data = pd.read_csv("mail.csv")  
 # Checking for missing values and replacing them with empty strings
 mail_data = raw_mail_data.where(pd.notnull(raw_mail_data), '')  
 
