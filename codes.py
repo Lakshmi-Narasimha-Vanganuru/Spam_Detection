@@ -1,3 +1,4 @@
+#Spam Detection Project using ml
 import numpy as np  # NumPy is used for numerical operations
 import pandas as pd  # Pandas is used for handling datasets (CSV files)
 
@@ -8,24 +9,29 @@ from sklearn.linear_model import LogisticRegression  # Logistic Regression model
 from sklearn.metrics import accuracy_score  # To evaluate model performance
 import pickle  # Used to save the trained model and vectorizer
 
+<<<<<<< HEAD:codes.py
 # **STEP 1: Load Dataset**
 raw_mail_data = pd.read_csv("mail.csv")  
+=======
+#Load Dataset
+raw_mail_data = pd.read_csv("C:/Users/naras/OneDrive/Desktop/uio/mail.csv")  
+>>>>>>> 40997af3dd1a2a046580af7ba8eac1520256b6ce:codes.py.py
 # Checking for missing values and replacing them with empty strings
 mail_data = raw_mail_data.where(pd.notnull(raw_mail_data), '')  
 
-# **STEP 2: Encode Labels**
+# STEP 2: Encode Labels
 # Spam = 1 (positive class), Ham = 0 (negative class)
 # WHY? Because ML models understand numerical values, not text labels
 mail_data.loc[mail_data['Category'] == 'spam', 'Category'] = 1  
 mail_data.loc[mail_data['Category'] == 'ham', 'Category'] = 0  
 
-# **STEP 3: Splitting the Dataset**
+# STEP 3: Splitting the Dataset
 X = mail_data['Message']  # Features (email text)
 Y = mail_data['Category'].astype(int)  # Labels (spam or ham)
 # Split data into 80% training and 20% testing (random_state=42 ensures consistent results)
 X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=0.2, random_state=42)
 
-# **STEP 4: Convert Text Data to Numeric Data Using TF-IDF**
+# STEP 4: Convert Text Data to Numeric Data Using TF-IDF
 # WHY? Machine learning models cannot process raw text directly, so we convert them into numerical vectors
 vectorizer = TfidfVectorizer(
     min_df=1,  # Ignore terms that appear in only one document (reduces noise)
@@ -39,7 +45,7 @@ vectorizer = TfidfVectorizer(
 X_train_features = vectorizer.fit_transform(X_train)  
 X_test_features = vectorizer.transform(X_test)  
 
-# **STEP 5: Train the Model (Logistic Regression)**
+# STEP 5: Train the Model (Logistic Regression)
 # WHY Logistic Regression? It is simple, efficient, and works well for binary classification problems like spam detection
 model = LogisticRegression(
     max_iter=500,  # Increases iterations to ensure the model converges properly
@@ -50,7 +56,7 @@ model = LogisticRegression(
 # Train the model using the training data
 model.fit(X_train_features, Y_train)  
 
-# **STEP 6: Evaluate Model Performance**
+# STEP 6: Evaluate Model Performance
 # WHY? To check how well the model has learned from the training data
 train_accuracy = accuracy_score(Y_train, model.predict(X_train_features)) * 100  
 test_accuracy = accuracy_score(Y_test, model.predict(X_test_features)) * 100  
@@ -59,14 +65,14 @@ test_accuracy = accuracy_score(Y_test, model.predict(X_test_features)) * 100
 print(f'Accuracy on training data: {train_accuracy:.2f}%')  
 print(f'Accuracy on test data: {test_accuracy:.2f}%')  
 
-# **STEP 7: Save the Model and Vectorizer**
+# STEP 7: Save the Model and Vectorizer
 with open("spam_model.pkl", "wb") as model_file:
     pickle.dump(model, model_file)
 
 with open("vectorizer.pkl", "wb") as vectorizer_file:
     pickle.dump(vectorizer, vectorizer_file)
 
-# **STEP 8: Define Function to Predict New Messages**
+# STEP 8: Define Function to Predict New Messages
 def predict_spam(message, vectorizer, model):
     """
     This function takes a new email message as input, 
