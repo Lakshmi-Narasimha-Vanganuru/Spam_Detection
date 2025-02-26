@@ -130,7 +130,7 @@ st.markdown(
     """
     <div style='text-align: center;'>
         🔍 Built with Machine Learning | Logistic Regression | TF-IDF  
-        <br> <a href='https://github.com/your-repo' style='color: #007BFF;'>GitHub Repository</a>  
+        <br> <a href='https://github.com/Lakshmi-Narasimha-Vanganuru/Spam_Detection' style='color: #007BFF;'>GitHub Repository</a>  
     </div>
     """,
     unsafe_allow_html=True
